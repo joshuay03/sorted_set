@@ -49,9 +49,10 @@ end
 # ```
 
 class SortedSet < Set
-  # Creates a SortedSet.  See Set.new for details.
-  def initialize(*args)
-    @hash = RBTree.new
-    super
-  end
+end
+
+if defined?(Set::CoreSet)
+  require_relative 'sorted_set/ruby4'
+else
+  require_relative 'sorted_set/ruby3'
 end
