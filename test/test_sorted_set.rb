@@ -110,14 +110,14 @@ class TC_SortedSet < Test::Unit::TestCase
     }
   end
 
-  def test_enumerable_to_set
+  def test_enumerable_to_sorted_set
     ary = [2,5,4,3,2,1,3]
 
-    set = ary.to_set(SortedSet)
+    set = SortedSet.new(ary)
     assert_instance_of(SortedSet, set)
     assert_equal([1,2,3,4,5], set.to_a)
 
-    set = ary.to_set(SortedSet) { |o| o * -2 }
+    set = SortedSet.new(ary) { |o| o * -2 }
     assert_instance_of(SortedSet, set)
     assert_equal([-10,-8,-6,-4,-2], set.to_a)
   end
