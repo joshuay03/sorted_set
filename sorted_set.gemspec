@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "sorted_set"
-  spec.version       = "1.0.3"
+  spec.version       = "1.1.0"
   spec.authors       = ["Akinori MUSHA"]
   spec.email         = ["knu@idaemons.org"]
 

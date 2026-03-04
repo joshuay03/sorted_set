@@ -1,5 +1,12 @@
 # SortedSet Changelog
 
+## 1.1.0 (2026-03-05)
+
+* Enhancements
+  * Support Ruby 4.0, where Set is a built-in C class that no longer uses `@hash`.  SortedSet now overrides primitive methods and relies on `Set::SubclassCompatible` for composite operations.
+  * Support JRuby with Ruby 4.0 compatibility, using `java.util.TreeSet` as the backing store instead of rbtree.
+  * Remove the runtime dependency on the set gem, which is part of the standard library or built-in across all supported Ruby versions.
+
 ## 1.0.3 (2021-02-13)
 
 * Enhancements
