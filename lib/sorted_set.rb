@@ -2,9 +2,12 @@
 
 require 'set'
 
-return if defined?(JRUBY_VERSION)
-
-require 'rbtree'
+if defined?(JRUBY_VERSION)
+  # JRuby has a built-in SortedSet (at least through JRuby 10).
+  return if defined?(::SortedSet)
+else
+  require 'rbtree'
+end
 
 Object.instance_exec do
   # Undefine SortedSet for two reasons.
@@ -51,7 +54,9 @@ end
 class SortedSet < Set
 end
 
-if defined?(Set::CoreSet)
+if defined?(JRUBY_VERSION)
+  require_relative 'sorted_set/jruby'
+elsif defined?(Set::CoreSet)
   require_relative 'sorted_set/ruby4'
 else
   require_relative 'sorted_set/ruby3'
